@@ -1,302 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nickname Generator – Gaming & Stylish Names</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nickname Generator App</title>
 
-  <style>
-    :root {
-      --bg: #0b0f1a;
-      --card: #12182b;
-      --primary: #6c7cff;
-      --accent: #00ffd5;
-      --text: #e6e9ff;
-      --muted: #9aa3c7;
-    }
+<style>
+:root{
+  --bg:#0b0f1a;
+  --card:#12182b;
+  --primary:#6c7cff;
+  --accent:#00ffd5;
+  --text:#eef1ff;
+  --muted:#9aa3c7;
+}
 
-    * {
-      box-sizing: border-box;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-    }
+*{box-sizing:border-box;font-family:system-ui,Segoe UI,sans-serif}
 
-    body {
-      margin: 0;
-      background: radial-gradient(circle at top, #131a3a, var(--bg));
-      color: var(--text);
-    }
+body{
+  margin:0;
+  background:radial-gradient(circle at top,#141b3f,var(--bg));
+  color:var(--text);
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
 
-    /* ===== HERO ===== */
-    .hero {
-      padding: 80px 20px;
-      text-align: center;
-    }
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center}
+}
 
-    .hero p {
-      max-width: 700px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 1.1rem;
-    }
+.app-icon{
+  width:120px;
+  height:120px;
+  border-radius:28px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  font-weight:800;
+  color:#000;
+}
 
-    .cta-buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+.hero h1{
+  font-size:3rem;
+  margin:15px 0 10px;
+}
 
-    .btn {
-      padding: 14px 26px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s ease;
-      border: none;
-    }
+.hero p{
+  color:var(--muted);
+  font-size:1.1rem;
+  line-height:1.6;
+}
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #000;
-    }
+.downloads{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
 
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--primary);
-      color: var(--text);
-    }
+.btn{
+  padding:14px 26px;
+  border-radius:14px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(108,124,255,0.25);
-    }
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:#000;
+}
 
-    /* ===== ICON PLACEHOLDER ===== */
-    .icon-box {
-      margin: 60px auto 0;
-      max-width: 260px;
-      padding: 30px;
-      border-radius: 20px;
-      background: linear-gradient(145deg, #151b35, #0d1225);
-      border: 1px dashed var(--primary);
-    }
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--primary);
+  color:var(--text);
+}
 
-    .icon-placeholder {
-      width: 120px;
-      height: 120px;
-      margin: auto;
-      border-radius: 24px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 42px;
-      font-weight: bold;
-      color: #000;
-    }
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(108,124,255,.3);
+}
 
-    .icon-box p {
-      margin-top: 15px;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
+/* FEATURES */
+.features{
+  margin-top:80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
 
-    /* ===== FEATURES ===== */
-    .features {
-      padding: 80px 20px;
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      max-width: 1200px;
-      margin: auto;
-    }
+.feature{
+  background:var(--card);
+  border:1px solid #1c2450;
+  border-radius:18px;
+  padding:25px;
+}
 
-    .feature-card {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 18px;
-      border: 1px solid #1c2450;
-    }
+.feature h3{
+  margin-top:0;
+  color:var(--accent);
+}
 
-    .feature-card h3 {
-      margin-top: 0;
-      color: var(--accent);
-    }
+.feature p{
+  color:var(--muted);
+  font-size:.95rem;
+}
 
-    .feature-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* ===== GENERATOR PREVIEW ===== */
-    .generator {
-      max-width: 900px;
-      margin: 0 auto 100px;
-      padding: 30px;
-      background: var(--card);
-      border-radius: 20px;
-      border: 1px solid #1c2450;
-    }
-
-    .generator h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .generator-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .nicknames {
-      display: grid;
-      gap: 10px;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-
-    .nickname {
-      background: #0e1430;
-      padding: 12px;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.9rem;
-    }
-
-    .nickname span {
-      color: var(--accent);
-    }
-
-    .actions button {
-      background: transparent;
-      border: none;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      padding: 30px 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-  </style>
+/* FOOTER */
+footer{
+  margin-top:80px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.85rem;
+}
+</style>
 </head>
 
 <body>
 
+<div class="container">
+
   <!-- HERO -->
   <section class="hero">
-    <h1>Premium Nickname Generator</h1>
-    <p>
-      Generate stylish gaming names, social media usernames, and unique text styles.
-      One click gives you hundreds of nicknames — copy, share, save, or fully customize.
-    </p>
+    <div>
+      <div class="app-icon">NG</div>
+      <h1>Nickname Generator</h1>
+      <p>
+        Create stylish gaming nicknames and social media usernames instantly.
+        One tap generates hundreds of cool names — copy, share, save, or fully customize.
+      </p>
 
-    <div class="cta-buttons">
-      <button class="btn btn-primary">Generate Nicknames</button>
-      <button class="btn btn-secondary">Custom Name Creator</button>
+      <div class="downloads">
+        <a href="#" class="btn btn-primary">Download on Google Play</a>
+        <a href="#" class="btn btn-outline">Download on App Store</a>
+      </div>
     </div>
 
-    <!-- App Icon Placeholder -->
-    <div class="icon-box">
-      <div class="icon-placeholder">NG</div>
-      <p>App Icon Preview<br/>Create App Icon Now</p>
+    <div>
+      <img src="https://dummyimage.com/420x760/0e1430/ffffff&text=App+Preview"
+           alt="App Preview"
+           style="width:100%;border-radius:26px;border:1px solid #1c2450;">
     </div>
   </section>
 
   <!-- FEATURES -->
   <section class="features">
-    <div class="feature-card">
-      <h3>🎮 Gaming & Social Names</h3>
-      <p>Create unique nicknames for games, Instagram, YouTube, TikTok, and more.</p>
+    <div class="feature">
+      <h3>🎮 Gaming Nicknames</h3>
+      <p>Perfect for PUBG, Free Fire, BGMI, Valorant and more.</p>
     </div>
 
-    <div class="feature-card">
-      <h3>⚡ One-Click Generation</h3>
-      <p>Generate hundreds of stylish nicknames instantly with a single click.</p>
+    <div class="feature">
+      <h3>🌐 Social Media Names</h3>
+      <p>Create usernames for Instagram, YouTube, TikTok & Discord.</p>
     </div>
 
-    <div class="feature-card">
+    <div class="feature">
+      <h3>⚡ One-Tap Generate</h3>
+      <p>Generate 100+ stylish nicknames instantly.</p>
+    </div>
+
+    <div class="feature">
       <h3>✍️ Custom Name Creator</h3>
-      <p>Manually edit letters, symbols, fonts, and styles for full control.</p>
+      <p>Edit fonts, symbols, and letters for full control.</p>
     </div>
 
-    <div class="feature-card">
-      <h3>💾 Save for Later</h3>
-      <p>Save your favorite nicknames and access them anytime.</p>
-    </div>
-
-    <div class="feature-card">
+    <div class="feature">
       <h3>📋 Copy & Share</h3>
-      <p>Copy names instantly or share them directly with friends.</p>
+      <p>Copy names instantly or share with friends.</p>
+    </div>
+
+    <div class="feature">
+      <h3>💾 Save Favorites</h3>
+      <p>Save your favorite nicknames for later use.</p>
     </div>
   </section>
 
-  <!-- GENERATOR PREVIEW -->
-  <section class="generator">
-    <h2>Nickname Preview</h2>
-
-    <div class="generator-actions">
-      <button class="btn btn-primary">Generate 100+ Names</button>
-      <button class="btn btn-secondary">Save All</button>
-    </div>
-
-    <div class="nicknames">
-      <div class="nickname">
-        <span>𓆩ShadowX𓆪</span>
-        <div class="actions">
-          <button>Copy</button> · <button>Save</button>
-        </div>
-      </div>
-
-      <div class="nickname">
-        <span>꧁FɪʀᴇLᴏʀᴅ꧂</span>
-        <div class="actions">
-          <button>Copy</button> · <button>Save</button>
-        </div>
-      </div>
-
-      <div class="nickname">
-        <span>ツDarkVibe</span>
-        <div class="actions">
-          <button>Copy</button> · <button>Save</button>
-        </div>
-      </div>
-
-      <div class="nickname">
-        <span>★NightClaw★</span>
-        <div class="actions">
-          <button>Copy</button> · <button>Save</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
     © 2026 Nickname Generator App · Stylish Names for Gamers & Creators
   </footer>
+
+</div>
 
 </body>
 </html>
